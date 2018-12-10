@@ -1,1 +1,11 @@
-Salut la compagnie
+@model IEnumerable<ArticleViewModel>
+
+<ul>
+    @foreach(var article in Model){
+        <li>
+            @article.Name
+            <a asp-controller="Article"
+                asp-action="Detail" asp-route-id="@article.Id">View</a>
+        </li>
+    }
+</ul>

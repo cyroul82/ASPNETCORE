@@ -1,0 +1,16 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@model ArticleViewModel
+
+@{
+    ViewData["title"] = "Edit";
+}
+
+Edit The Book @Model.Name
+<form asp-controller="Article" asp-action="Edit" method="post">
+    @Html.HiddenFor(x => x.Id)
+    <label asp-for="Name"></label>
+    @Html.TextBoxFor(x => x.Name)
+    <input class="btn btn-sm btn-primary" type="submit" />
+    <input class="btn btn-sm btn-error" type="cancel" value="Cancel"/>
+</form>

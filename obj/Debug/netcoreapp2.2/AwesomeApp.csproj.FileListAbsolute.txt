@@ -30,3 +30,4 @@ C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\AwesomeApp.pdb
 C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\AwesomeApp.csproj.CopyComplete
 C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Views\Article\Index.g.cshtml.cs
 C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Views\Article\Detail.g.cshtml.cs
+C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Views\Article\Edit.g.cshtml.cs
