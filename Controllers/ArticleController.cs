@@ -5,52 +5,54 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AwesomeApp.Models;
+using AwesomeApp.Services.Article;
 
 namespace AwesomeApp.Controllers
 {
     public class ArticleController : Controller
     {
-        public IActionResult Index(){
-            var list = new List<ArticleViewModel>();
-            var model = new ArticleViewModel {
-                 Id = 1,
-              Name = "DevOps" 
-            };
-            list.Add(model);
-            model = new ArticleViewModel {
-                 Id = 2,
-              Name = "Agilité" 
-            };
-            list.Add(model);
-            model = new ArticleViewModel {
-                Id = 3,
-                Name = "Scrum" 
-            };
-            list.Add(model);
-            return View(list);
+        private readonly IArticleService _articleService;
+
+        public ArticleController(IArticleService articleService)
+        {
+            _articleService = articleService;
+
+        }
+        public async Task<IActionResult> Index()
+        {
+            return View(await _articleService.GetArticles());
         }
 
         [HttpGet]
-        public IActionResult Detail(int id){
-            var model = new ArticleViewModel{
-              Id = 1,
-              Name = "DevOps"  
-            };
-            return View(model);
+        public async Task<IActionResult> Detail(int id)
+        {
+            var model = await _articleService.GetArticle(id);
+            if(model != null){
+                return View(model);
+            }
+            return NotFound();
         }
 
         [HttpGet]
-        public IActionResult Edit(int id){
-            var model = new ArticleViewModel{
-              Id = 1,
-              Name = "DevOps"  
-            };
-            return View(model);
+        public async Task<IActionResult> Edit(int id)
+        {
+            var model = await _articleService.GetArticle(id);
+            if(model != null){
+                return View(model);
+            }
+            return NotFound();
         }
 
         [HttpPost]
-        public IActionResult Edit(ArticleViewModel article) {
+        public IActionResult Edit(ArticleViewModel article)
+        {
             return View("Detail", article);
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            return Ok();
         }
     }
 }
