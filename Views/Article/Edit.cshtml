@@ -8,6 +8,7 @@
 
 Edit The Book @Model.Name
 <form asp-controller="Article" asp-action="Edit" method="post">
+    @Html.HiddenFor(x => x.ImagePath)
     @Html.HiddenFor(x => x.Id)
     <label asp-for="Name"></label>
     @Html.TextBoxFor(x => x.Name)

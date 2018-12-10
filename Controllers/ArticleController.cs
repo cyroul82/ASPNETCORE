@@ -46,7 +46,12 @@ namespace AwesomeApp.Controllers
         [HttpPost]
         public IActionResult Edit(ArticleViewModel article)
         {
-            return View("Detail", article);
+            if(!ModelState.IsValid){
+                return View("Detail", article);
+            }
+
+            _articleService.SaveArticle(article);
+            return RedirectToAction("Index");
         }
 
         [HttpDelete]

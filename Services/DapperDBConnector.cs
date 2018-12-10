@@ -13,8 +13,9 @@ namespace AwesomeApp.Services
         }
         public SqlConnection GetIDBConnector()
         {
-            var s = new SqlConnectionStringBuilder(_configuration.GetConnectionString("connexion")){
-                ConnectTimeout= 120
+            var s = new SqlConnectionStringBuilder(_configuration.GetConnectionString("connexion"))
+            {
+                ConnectTimeout = 120
             }.ToString();
             SqlConnection conn = new SqlConnection(s);
             conn.Open();

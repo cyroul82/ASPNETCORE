@@ -9,45 +9,34 @@ namespace AwesomeApp.Services.Article
 {
     public class ArticleService : IArticleService
     {
-        private static IEnumerable<ArticleViewModel> list = new List<ArticleViewModel>{
-            new ArticleViewModel
-            {
-                Id = 1,
-                Name = "DevOps"
-            },
-             new ArticleViewModel
-            {
-                Id = 2,
-                Name = "Agilité"
-            },
-            new ArticleViewModel
-            {
-                Id = 3,
-                Name = "Scrum"
-            }
-        };
         private readonly IDBConnector _dBConnector;
 
         public ArticleService(IDBConnector dBConnector)
         {
             _dBConnector = dBConnector;
-
         }
 
-        public void EditArticle(ArticleViewModel article)
+        public async Task SaveArticle(ArticleViewModel article)
         {
-            
-            var model = list.SingleOrDefault(x => x.Id == article.Id);
-            if (model != null)
+            using (var c = _dBConnector.GetIDBConnector())
             {
-                model.Name = article.Name;
+                string sql = @"UPDATE Article set name=@name, imagepath=@imagepath where id=@id";
+                var item = await c.QuerySingleOrDefaultAsync<ArticleViewModel>(sql, new { id=article.Id, name=article.Name, imagepath=article.ImagePath });
+                if (item != null)
+                {
+                    item.Name = article.Name;
+                    item.ImagePath = article.ImagePath;
+                }
+                
+
             }
         }
 
         public async Task<ArticleViewModel> GetArticle(int id)
         {
-            using (var c = _dBConnector.GetIDBConnector()){
-                string sql =  @"SELECT * from Article where ID=@id";
+            using (var c = _dBConnector.GetIDBConnector())
+            {
+                string sql = @"SELECT * from Article where ID=@id";
                 var item = await c.QuerySingleOrDefaultAsync<ArticleViewModel>(sql, new { id });
                 return item;
             }
@@ -55,7 +44,8 @@ namespace AwesomeApp.Services.Article
 
         public async Task<IEnumerable<ArticleViewModel>> GetArticles()
         {
-            using (var c = _dBConnector.GetIDBConnector()){
+            using (var c = _dBConnector.GetIDBConnector())
+            {
                 string sql = @"SELECT * from Article";
                 var list = await c.QueryAsync<ArticleViewModel>(sql);
                 return list;

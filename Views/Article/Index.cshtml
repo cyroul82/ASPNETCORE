@@ -1,13 +1,19 @@
 @model IEnumerable<ArticleViewModel>
 
-<ul>
+<div class="row">
     @foreach(var article in Model){
-        <li>
-            @article.Name
-            <a asp-controller="Article"
-                asp-action="Detail" asp-route-id="@article.Id">View</a>
+        <div class="card col-sm-4">
+            <img class="card-img-top" src="@article.ImagePath" alt="">
+            <div class="card-body">
+                <h5 class="card-title">
+                    @article.Name
+                </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a asp-controller="Article"
-                asp-action="Delete" asp-route-id="@article.Id">Delete</a>
-        </li>
+                    asp-action="Detail" asp-route-id="@article.Id">View</a>
+                <a asp-controller="Article"
+                    asp-action="Delete" asp-route-id="@article.Id">Delete</a>
+            </div>
+        </div>        
     }
-</ul>
+</div>

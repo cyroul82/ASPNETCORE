@@ -7,9 +7,8 @@ namespace AwesomeApp.Services.Article
 {
     public interface IArticleService
     {
-         Task<IEnumerable<ArticleViewModel>> GetArticles();
+        Task<IEnumerable<ArticleViewModel>> GetArticles();
         Task<ArticleViewModel> GetArticle(int id);
-
-         void EditArticle(ArticleViewModel id);
+        Task SaveArticle(ArticleViewModel article);
     }
 }
