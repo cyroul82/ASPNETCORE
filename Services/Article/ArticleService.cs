@@ -20,15 +20,20 @@ namespace AwesomeApp.Services.Article
         {
             using (var c = _dBConnector.GetIDBConnector())
             {
-                string sql = @"UPDATE Article set name=@name, imagepath=@imagepath where id=@id";
-                var item = await c.QuerySingleOrDefaultAsync<ArticleViewModel>(sql, new { id=article.Id, name=article.Name, imagepath=article.ImagePath });
-                if (item != null)
-                {
-                    item.Name = article.Name;
-                    item.ImagePath = article.ImagePath;
-                }
+                string sql = @"UPDATE Article set name=@name, imagepath=@imagepath, isbn=@isbn, description=@description, url=@url, email=@email, date=@date, price=@price where id=@id";
                 
+                var item = await c.ExecuteAsync(sql, new { 
+                    isbn = article.ISBN, 
+                    name = article.Name, 
+                    description = article.Description, 
+                    url = article.Url, 
+                    imagepath = article.ImagePath,
+                    email = article.Email,
+                    price = article.Price,
+                    date = article.Date,
+                    id = article.Id,
 
+                    });
             }
         }
 
@@ -49,6 +54,35 @@ namespace AwesomeApp.Services.Article
                 string sql = @"SELECT * from Article";
                 var list = await c.QueryAsync<ArticleViewModel>(sql);
                 return list;
+            }
+        }
+
+        public async Task AddArticle(ArticleViewModel article)
+        {
+            using (var c = _dBConnector.GetIDBConnector())
+            {
+                string sql = @"insert into Article (isbn, name, email, description, url, imagepath, price, date) VALUES (@isbn, @name, @email, @description, @url, @imagepath, @price, @date)";
+                // var t = await c.Database.Insert(new ArticleViewModel { 
+                //     ISBN = article.ISBN, 
+                //     Name = article.Name, 
+                //     Description = article.Description, 
+                //     Url = article.Url, 
+                //     ImagePath = article.ImagePath,
+                //     Email = article.Email,
+                //     Price = article.Price,
+                //     Date = article.Date,
+
+                //     });
+                var item = await c.ExecuteAsync(sql, new { 
+                    isbn = article.ISBN, 
+                    name = article.Name, 
+                    description = article.Description,  
+                    url = article.Url, 
+                    imagepath = article.ImagePath,
+                    email = article.Email,
+                    date = article.Date,
+                    price = article.Price
+                    });
             }
         }
     }

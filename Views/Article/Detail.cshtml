@@ -3,6 +3,10 @@
 @{
     ViewData["title"] = "Coucou";
 }
-@Model.Name  
+
+@Model.Name 
+@Model.ISBN
+@Model.Email
+@Model.Description
 <a asp-controller="Article"
    asp-action="Edit" asp-route-id="@Model.Id">Edit</a>

@@ -43,14 +43,24 @@ namespace AwesomeApp.Controllers
             return NotFound();
         }
 
+        public IActionResult Add()
+        {
+            return View("Edit", new ArticleViewModel());
+        }
+
         [HttpPost]
         public IActionResult Edit(ArticleViewModel article)
         {
             if(!ModelState.IsValid){
-                return View("Detail", article);
+                return View("Edit", article);
             }
 
-            _articleService.SaveArticle(article);
+            if(article.Id != 0) {
+                _articleService.SaveArticle(article);
+            }
+            else {
+                _articleService.AddArticle(article);
+            }
             return RedirectToAction("Index");
         }
 

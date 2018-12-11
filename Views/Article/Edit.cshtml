@@ -5,13 +5,48 @@
 @{
     ViewData["title"] = "Edit";
 }
+<div class="text-center">
+<h1>Edit : @Model.Name</h1> 
+</div>
 
-Edit The Book @Model.Name
 <form asp-controller="Article" asp-action="Edit" method="post">
     @Html.HiddenFor(x => x.ImagePath)
     @Html.HiddenFor(x => x.Id)
-    <label asp-for="Name"></label>
-    @Html.TextBoxFor(x => x.Name)
+    <div class="form-group">
+        @Html.LabelFor(x => x.ISBN)
+        @Html.EditorFor(x => x.ISBN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ISBN)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.EditorFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email)
+        @Html.EditorFor(x => x.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>  
+    <div class="form-group">
+        @Html.LabelFor(x => x.Description)
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Price)
+        @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Date)
+        @Html.EditorFor(x => x.Date, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Date)
+    </div>
+    
     <input class="btn btn-sm btn-primary" type="submit" />
     <input class="btn btn-sm btn-error" type="cancel" value="Cancel"/>
 </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

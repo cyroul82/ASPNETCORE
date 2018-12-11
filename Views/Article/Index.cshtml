@@ -1,5 +1,10 @@
 @model IEnumerable<ArticleViewModel>
 
+<div class="row mb-2">
+<a asp-controller="Article"
+   asp-action="Add" class="btn btn-sm btn-primary">Ajouter</a>
+</div>
+
 <div class="row">
     @foreach(var article in Model){
         <div class="card col-sm-4">

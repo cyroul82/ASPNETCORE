@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AwesomeApp.Services;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -58,12 +60,29 @@ namespace AwesomeApp
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
+            // var supportedCultures = new[]
+            // {
+            //     new CultureInfo("fr-fr"),
+            // };
+            // app.UseRequestLocalization(new RequestLocalizationOptions
+            // {
+            //     DefaultRequestCulture = new RequestCulture("fr-FR"),
+            //     // Formatting numbers, dates, etc.
+            //     SupportedCultures = supportedCultures,
+            //     // UI strings that we have localized.
+            //     SupportedUICultures = supportedCultures
+            // });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
         }
     }
 }
