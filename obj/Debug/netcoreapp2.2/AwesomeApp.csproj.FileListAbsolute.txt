@@ -97,3 +97,4 @@ C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Areas\Iden
 C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\Formation\Documents\AwesomeApp\obj\Debug\netcoreapp2.2\Razor\Views\Partial\_Modal.g.cshtml.cs

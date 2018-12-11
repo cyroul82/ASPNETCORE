@@ -63,11 +63,12 @@ namespace AwesomeApp.Controllers
             }
             return RedirectToAction("Index");
         }
-
+            
         [HttpDelete]
         public IActionResult Delete(int id)
         {
             return Ok();
         }
+
     }
 }
