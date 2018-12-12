@@ -67,6 +67,7 @@ namespace AwesomeApp.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
+            _articleService.DeleteArticle(id);
             return Ok();
         }
 

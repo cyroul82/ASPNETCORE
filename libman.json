@@ -5,6 +5,11 @@
     {
       "library": "bootbox.js@4.4.0",
       "destination": "wwwroot/lib/bootbox.js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js/"
     }
   ]
 }

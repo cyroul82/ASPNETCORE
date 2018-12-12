@@ -10,6 +10,7 @@ namespace AwesomeApp.Services.Article
         Task<IEnumerable<ArticleViewModel>> GetArticles();
         Task<ArticleViewModel> GetArticle(int id);
         Task SaveArticle(ArticleViewModel article);
-        Task AddArticle(ArticleViewModel article);
+        Task<long> AddArticle(ArticleViewModel article);
+        Task<bool> DeleteArticle(int id);
     }
 }

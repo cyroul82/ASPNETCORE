@@ -14,11 +14,11 @@
                     @article.Name
                 </h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a asp-controller="Article"
-                   asp-action="Detail" asp-route-id="@article.Id">View</a>
-                @*<a asp-controller="Article"
-                asp-action="Delete" asp-route-id="@article.Id">Delete</a>*@
-                <button onclick="onDelete(@article.Id)">Delete</button>
+                <div class="text-center">
+                    <a asp-controller="Article"
+                       asp-action="Detail" asp-route-id="@article.Id"><i class="far fa-eye fa-2x"></i></a>
+                    <a href="#" onclick="deleteArticle(@article.Id)"><i class="fas fa-trash-alt fa-2x"></i></a>
+                </div>
             </div>
         </div>        
     }
@@ -27,22 +27,35 @@
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     <script>
-        function onDelete(id) {
+        function deleteArticle(id) {
             if (id) {
                 bootbox.confirm({
-                    message: "This is a confirm with custom button text and color! Do you like it?",
+                    message: "Voulez-vous supprimer cet article ?",
                     buttons: {
                         confirm: {
-                            label: 'Yes',
+                            label: 'Oui',
                             className: 'btn-success'
                         },
                         cancel: {
-                            label: 'No',
+                            label: 'Non',
                             className: 'btn-danger'
                         }
                     },
                     callback: function (result) {
-                        console.log('This was logged in the callback: ' + result);
+                        if (result) {
+                            $.ajax({
+                                url: `/Article/Delete/${id}`,
+                                type: 'DELETE',
+                                success: function (result) {
+                                    toastr.success("yeah");
+                                },
+                                error: function (request, msg, error) {
+                                    toastr.error("ooohhh");
+                                }
+                            });
+                            
+                        }
+                        
                     }
                 });
             }

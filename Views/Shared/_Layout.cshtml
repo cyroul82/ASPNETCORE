@@ -13,9 +13,11 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link href="~/lib/toastr.js/toastr.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -72,7 +74,8 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/bootbox.js/bootbox.js"></script>
+    <script src="~/lib/bootbox.js/bootbox.js"></script>
+    <script src="~/lib/toastr.js/toastr.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
