@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using AwesomeApp.Models;
 using AwesomeApp.Services;
 using AwesomeApp.Services.Article;
 using Microsoft.AspNetCore.Builder;
@@ -35,6 +36,16 @@ namespace AwesomeApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.Cookie.Name = ".formation.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+            });
+
             services.AddTransient<IArticleService, ArticleService>();
 
             services.AddTransient<IDBConnector, DapperDBConnector>();
@@ -56,10 +67,15 @@ namespace AwesomeApp
                 app.UseHsts();
             }
 
+            //app.Run(async context => await context.Response.WriteAsync("Salut"));
+                       
+
+            app.UseMiddleware<TestMiddleware>();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseAuthentication();
 
             // var supportedCultures = new[]
@@ -82,7 +98,12 @@ namespace AwesomeApp
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            
+            app.Map("/Article/Add", x => x.Use(async (context, next) =>
+            {
+                await next.Invoke();
+            }));
+
+
         }
     }
 }

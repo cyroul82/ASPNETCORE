@@ -18,6 +18,8 @@
                     <a asp-controller="Article"
                        asp-action="Detail" asp-route-id="@article.Id"><i class="far fa-eye fa-2x"></i></a>
                     <a href="#" onclick="deleteArticle(@article.Id)"><i class="fas fa-trash-alt fa-2x"></i></a>
+                    <a href="#" onclick="addToCart(@article.Id)"><i class="fab fa-opencart fa-2x"></i></a>
+                    
                 </div>
             </div>
         </div>        
@@ -59,6 +61,49 @@
                     }
                 });
             }
-        };
+        }
+
+        function addToCart(articleId) {
+            if (articleId) {
+                addToCookie(articleId);
+            }
+        }
+
+        function removeToCart(articleId) {
+            if (articleId) {
+                removeFromCookie(articleId);
+            }
+        }
+
+        function getCartCookieValues() {
+            if ($.cookie("cart")) {
+                return JSON.parse($.cookie("cart"));
+            }
+            return [];
+        }
+
+        function setCartCookieValues(values) {
+            $.cookie("cart", JSON.stringify(values));
+        }
+            
+        function addToCookie(articleId) {
+            var cookieValues = getCartCookieValues();
+            let obj = { id: `${articleId}`}
+            if (_.some(cookieValues, obj) === false) {
+                cookieValues.push(obj);
+            }
+            setCartCookieValues(cookieValues);
+        }
+
+        function removeFromCookie(articleId) {
+            var cookieValues = getCartCookieValues();
+            let obj = { id: `${articleId}` }
+            if (_.some(cookieValues, obj) === true) {
+                cookieValues = _.remove(cookieValues, function (val) {
+                    return val.id !== obj.id;
+                });
+            }
+            setCartCookieValues(cookieValues);
+        }
     </script>
 }

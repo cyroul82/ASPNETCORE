@@ -4744,6 +4744,58 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "xunit.abstractions/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/xunit.abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/xunit.abstractions.dll": {}
+        }
+      },
+      "Xunit.DependencyInjection/4.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "NETStandard.Library": "1.6.1",
+          "xunit.extensibility.execution": "[2.2.0, 3.0.0)"
+        },
+        "compile": {
+          "lib/netstandard1.3/Xunit.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Xunit.DependencyInjection.dll": {}
+        }
+      },
+      "xunit.extensibility.core/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "xunit.abstractions": "2.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.core.dll": {}
+        }
+      },
+      "xunit.extensibility.execution/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "xunit.extensibility.core": "[2.2.0]"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
+        }
       }
     }
   },
@@ -13007,6 +13059,72 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "xunit.abstractions/2.0.1": {
+      "sha512": "W2N3sBVk+ZXfIZYtHYsUGf6j7qsFJ2QlG/zQojFmDt0jB2YhnAgp/lmKVduedn5ZMcvKHOzMUDQ4uZ5BlNaS+Q==",
+      "type": "package",
+      "path": "xunit.abstractions/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/xunit.abstractions.dll",
+        "lib/net35/xunit.abstractions.xml",
+        "lib/netstandard1.0/xunit.abstractions.dll",
+        "lib/netstandard1.0/xunit.abstractions.xml",
+        "xunit.abstractions.2.0.1.nupkg.sha512",
+        "xunit.abstractions.nuspec"
+      ]
+    },
+    "Xunit.DependencyInjection/4.2.0": {
+      "sha512": "/0/32HoxnG42f0nAH7ofaEaPm8iwQLWt+jZ2uQh42hTJYGGlhORPXFndY//wd3iQxwXxP9z8ZaM5B0lznNIJag==",
+      "type": "package",
+      "path": "xunit.dependencyinjection/4.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Xunit.DependencyInjection.dll",
+        "lib/net45/Xunit.DependencyInjection.pdb",
+        "lib/net45/Xunit.DependencyInjection.xml",
+        "lib/net46/Xunit.DependencyInjection.dll",
+        "lib/net46/Xunit.DependencyInjection.pdb",
+        "lib/net46/Xunit.DependencyInjection.xml",
+        "lib/netstandard1.3/Xunit.DependencyInjection.dll",
+        "lib/netstandard1.3/Xunit.DependencyInjection.pdb",
+        "lib/netstandard1.3/Xunit.DependencyInjection.xml",
+        "xunit.dependencyinjection.4.2.0.nupkg.sha512",
+        "xunit.dependencyinjection.nuspec"
+      ]
+    },
+    "xunit.extensibility.core/2.2.0": {
+      "sha512": "SBfjFa8RuppKqYRTnkF+Vg9n7uJ6Az5XUQM+Gp27sD2lkOTmO1GRAytxa9/O3oyoOckuYNmGSaHCSgdMTVI+8w==",
+      "type": "package",
+      "path": "xunit.extensibility.core/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.1/xunit.core.dll",
+        "lib/netstandard1.1/xunit.core.dll.tdnet",
+        "lib/netstandard1.1/xunit.core.xml",
+        "lib/netstandard1.1/xunit.runner.tdnet.dll",
+        "lib/netstandard1.1/xunit.runner.utility.net452.dll",
+        "xunit.extensibility.core.2.2.0.nupkg.sha512",
+        "xunit.extensibility.core.nuspec"
+      ]
+    },
+    "xunit.extensibility.execution/2.2.0": {
+      "sha512": "/CPFI5Nk6ksA+hWxsx3tmdmtuV2bX7M0wAbW7nbHxDo7cU9F0k9DxA0eWF30VUGKHjXbhR2eyN3/vdepIikiTw==",
+      "type": "package",
+      "path": "xunit.extensibility.execution/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/xunit.execution.desktop.dll",
+        "lib/net452/xunit.execution.desktop.xml",
+        "lib/netstandard1.1/xunit.execution.dotnet.dll",
+        "lib/netstandard1.1/xunit.execution.dotnet.xml",
+        "xunit.extensibility.execution.2.2.0.nupkg.sha512",
+        "xunit.extensibility.execution.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -13016,7 +13134,9 @@
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0",
+      "System.Data.SqlClient >= 4.6.0",
+      "Xunit.DependencyInjection >= 4.2.0"
     ]
   },
   "packageFolders": {
@@ -13088,6 +13208,14 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.6.0, )"
+          },
+          "Xunit.DependencyInjection": {
+            "target": "Package",
+            "version": "[4.2.0, )"
           }
         },
         "imports": [

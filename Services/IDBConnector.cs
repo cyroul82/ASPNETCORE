@@ -5,6 +5,6 @@ namespace AwesomeApp.Services
 {
     public interface IDBConnector
     {
-         SqlConnection GetIDBConnector();
+        SqlConnection GetIDBConnector();
     }
 }
