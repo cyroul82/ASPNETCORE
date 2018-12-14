@@ -1,0 +1,29 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "https://use.fontawesome.com/releases/v5.6.0/css/all.css",
+      "wwwroot/lib/toastr.js/toastr.css",
+      "wwwroot/css/site.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/lib/jquery/dist/jquery.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "wwwroot/lib/bootbox.js/bootbox.js",
+      "wwwroot/lib/toastr.js/toastr.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
